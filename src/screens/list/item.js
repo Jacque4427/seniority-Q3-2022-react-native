@@ -14,7 +14,7 @@ import customStyles, {
   IconContainer,
 } from './index.styles';
 
-const Item = ({player}) => {
+const Item = ({player, navigation}) => {
   const renderImage = () => {
     if (player.image) {
       return (
@@ -64,23 +64,25 @@ const Item = ({player}) => {
   const renderButtonsRow = () => {
     return (
       <ButtonsContainer>
-        {renderButton(require('../../assets/edit-icon.png'), 'flex-end')}
-        {renderButton(require('../../assets/delete-icon.png'), 'flex-start')}
+        <IconContainer alignItems={'flex-end'}>
+          <CustomIcon
+            onPress={() => navigation.navigate('Form', {player})}
+            disabled={false}
+            height={40}
+            width={40}
+            source={require('../../assets/edit-icon.png')}
+          />
+        </IconContainer>
+        <IconContainer alignItems={'flex-start'}>
+          <CustomIcon
+            onPress={() => console.log('siii')}
+            disabled={false}
+            height={40}
+            width={40}
+            source={require('../../assets/delete-icon.png')}
+          />
+        </IconContainer>
       </ButtonsContainer>
-    );
-  };
-
-  const renderButton = (source, alignItems) => {
-    return (
-      <IconContainer alignItems={alignItems}>
-        <CustomIcon
-          onPress={() => console.log('siii')}
-          disabled={false}
-          height={40}
-          width={40}
-          source={source}
-        />
-      </IconContainer>
     );
   };
 

@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {usePlayersList} from '../../hooks/usePlayersList';
 import {Item} from './item';
 
-const List = ({nameToSearch}) => {
+const List = ({nameToSearch, navigation}) => {
   const {players, getPlayers} = usePlayersList();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const List = ({nameToSearch}) => {
   return (
     <View>
       {playersFiltered.map(player => (
-        <Item key={player.id} player={player} />
+        <Item key={player.id} player={player} navigation={navigation} />
       ))}
     </View>
   );

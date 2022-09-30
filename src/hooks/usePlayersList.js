@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from "axios";
-import { BASE_URL, AUTHOR_ID } from '../helpers/constants'
+import { BASE_URL, PLAYER_URL, AUTHOR_ID } from '../helpers/constants'
 
 export const usePlayersList = () => {
   const [players, setPlayers] = useState([])
@@ -11,7 +11,7 @@ export const usePlayersList = () => {
       }
     };
 
-    axios.get(`${BASE_URL}player`, config)
+    axios.get(`${BASE_URL}${PLAYER_URL}`, config)
       .then(res => {
         const { data } = res
         setPlayers(data);
